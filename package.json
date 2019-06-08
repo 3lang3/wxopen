@@ -7,7 +7,7 @@
     "example": "example"
   },
   "scripts": {
-    "start": "PORT=3005 node index.js",
+    "start": "cross-env PORT=3005 node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,5 +28,8 @@
     "morgan": "~1.9.0",
     "redis": "^2.8.0",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
   }
 }
