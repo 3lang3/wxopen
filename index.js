@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var fs = require('fs');
 var path = require('path');
 var logger = require('morgan');
 var debug = require('debug')('node-middlleware-jump:server');
@@ -7,6 +8,7 @@ var http = require('http');
 var uuid = require('uuid')
 var redis = require('redis');
 var config = require('./config')
+
 // init express app and redis client 
 var app = express();
 var client = redis.createClient();
@@ -17,9 +19,20 @@ const setAsync = promisify(client.set).bind(client)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'example/front/build')));
+//front route
+app.get('/', (req, res, next) => {
+  res.writeHead(200, { 'Content-Type': 'text/html' })
+  fs.readFile('./example/front/build/index.html', 'utf-8', function (err, data) {
+    if (err) {
+      throw err;
+    }
+    res.end(data);
+  });
+})
 
 // jump router
-app.use('/jump/:key', async (req, res, next) => {
+app.get('/jump/:key', async (req, res, next) => {
   // 获取用户浏览器环境
   const { key } = req.params
   try {
@@ -47,7 +60,7 @@ app.use('/jump/:key', async (req, res, next) => {
 });
 
 // api
-app.use('/geturl', async (req, res, next) => {
+app.use('/api/geturl', async (req, res, next) => {
   const { url } = req.query
   if (!url || !/^https?:\/\/|^\/\//.test(url)) {
     return res.json({ type: 0, data: null, msg: '请输入以http|https或者//开头到链接地址～' })
