@@ -9,7 +9,7 @@ const EmptyServerUrl = () => (
 
 const QRcodeRender = ({ value }) => (
   <div style={{ textAlign: 'center', marginTop: '2rem'}}>
-    <QRcode value={`http://${window.location.hos}/jump/${value}`} />
+    <QRcode value={`http://${window.location.host}/jump/${value}`} />
     <p>使用微信扫一扫~(<a href={`/jump/${value}`}>http://{window.location.host}/jump/{value}</a>)</p>
   </div>
 )
