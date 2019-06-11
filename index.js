@@ -68,7 +68,7 @@ app.use('/api/geturl', async (req, res, next) => {
   try {
     const urlValue = uuid.v1().split('-')[0]
     await setAsync(urlValue, url)
-    return res.json({ type: 1, data: `${config.host}/${urlValue}`, msg: 'success~' })
+    return res.json({ type: 1, data: `${urlValue}`, msg: 'success~' })
   } catch (error) {
     res.json({ type: 0, data: null, msg: JSON.stringify(error) })
   }
