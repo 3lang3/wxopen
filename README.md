@@ -35,29 +35,33 @@ res.statusCode = 206
 # ✍️ Develop Or Contributor
 required:
  - redis
- - nodejs
+ - nodejs 
  - npm(yarn)
 
-for npm :
-```js
-// 安装依赖
+开启redis服务，安装和文档移步[redis page](https://github.com/antirez/redis)
+```bash
+# demo使用默认配置
+redis-server
+```
+开启api服务，nodejs安装和文档[nodejs page](https://github.com/nodejs/node)
+```bash
+# 安装依赖
 npm install
-// 开启服务
+# 开启服务
 npm start
 ```
-编译前端模版(react-create-app)
+编译前端模版(create-react-app, 基于react的脚手架) 相关文档: [react](https://github.com/facebook/react),  [create-react-app](https://github.com/facebook/create-react-app)
 ```bash
 # 进入目录
 cd example/front
-```
-```js
-// 安装依赖
+# 安装依赖
 npm install
-// 编译
+# 编译
 npm run build
 ```
 
 # 📖TODO
 下面功能查询了相关资料，都没有找到满意都答案，大都是通过hack ticket进行伪装，如果你有好的实现或想法，欢迎交流～
- - app直接打开wechat浏览器
- - wechat浏览器直接打开app
+ - [] app直接打开wechat浏览器
+ - [] wechat浏览器直接打开app
+ - [] 用户浏览器直接打开wechat or app
