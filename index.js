@@ -1,3 +1,8 @@
+/**
+| author: Ethan
+| source: https://github.com/EthanOrange/wechat-redirect
+| desc: 在微信浏览器中直接打开用户自带浏览器
+*/
 var createError = require('http-errors');
 var express = require('express');
 var fs = require('fs');
@@ -9,9 +14,16 @@ var uuid = require('uuid')
 var redis = require('redis');
 var config = require('./config')
 
-// init express app and redis client 
 var app = express();
-var client = redis.createClient();
+
+/**
+|--------------------------------------------------
+| connect your redis server
+| THE DEMO REDIS START BY ALL DEFAULT OPTION!!!
+|--------------------------------------------------
+*/
+const redisOption = {} // config your redis option in here 
+const client = redis.createClient(redisOption);
 const { promisify } = require('util')
 const getAsync = promisify(client.get).bind(client)
 const setAsync = promisify(client.set).bind(client)
@@ -19,10 +31,13 @@ const setAsync = promisify(client.set).bind(client)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// you can change front static path in here
 app.use(express.static(path.join(__dirname, 'example/front/build')));
 //front route
 app.get('/', (req, res, next) => {
   res.writeHead(200, { 'Content-Type': 'text/html' })
+  // this is front example build index template
   fs.readFile('./example/front/build/index.html', 'utf-8', function (err, data) {
     if (err) {
       throw err;
@@ -59,7 +74,7 @@ app.get('/jump/:key', async (req, res, next) => {
   }
 });
 
-// api
+// generator url key
 app.use('/api/geturl', async (req, res, next) => {
   const { url } = req.query
   if (!url || !/^https?:\/\/|^\/\//.test(url)) {
