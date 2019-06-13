@@ -62,6 +62,6 @@ npm run build
 
 # 📖TODO
 下面功能查询了相关资料，都没有找到满意都答案，大都是通过hack ticket进行伪装，如果你有好的实现或想法，欢迎交流～
-- [] app直接打开wechat浏览器
-- [] wechat浏览器直接打开app
-- [] 用户浏览器直接打开wechat or app
+  - [ ] app直接打开wechat浏览器
+  - [ ] wechat浏览器直接打开app
+  - [ ] 用户浏览器直接打开wechat or app
