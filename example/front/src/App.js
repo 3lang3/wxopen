@@ -7,12 +7,14 @@ const EmptyServerUrl = () => (
   <section style={{ marginTop: '2rem' }}>输入测试url后将生成二维码，使用wechat扫一扫测试</section>
 )
 
-const QRcodeRender = ({ value }) => (
+const QRcodeRender = ({ value }) => {
+  const shortUlr = `${window.location.protocol}//${window.location.host}/jump/${value}`
+  return (
   <div style={{ textAlign: 'center', marginTop: '2rem'}}>
-    <QRcode value={`http://${window.location.host}/jump/${value}`} />
-    <p>使用微信扫一扫~(<a href={`/jump/${value}`}>http://{window.location.host}/jump/{value}</a>)</p>
+    <QRcode value={shortUlr} />
+    <p>使用微信扫一扫~(<a href={shortUlr}>{shortUlr}</a>)</p>
   </div>
-)
+)}
 
 function App() {
   const [url, setUrl] = useState('')
@@ -25,7 +27,7 @@ function App() {
       const serverData = await fetch(`/api/geturl?url=${url}`)
       const { data, type, msg } = await serverData.json()
       setLoading(false)
-      if (!type) alert(msg)
+      if (!type) return alert(msg)
       setServerUrl(data)
     } catch (error) {
       alert('服务器在发呆😐~')
