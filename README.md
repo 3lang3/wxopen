@@ -65,3 +65,7 @@ npm run build
   - [ ] app直接打开wechat浏览器
   - [ ] wechat浏览器直接打开app
   - [ ] 用户浏览器直接打开wechat or app
+
+
+UI方面
+  - [ ] IOS微信浏览器提示页
