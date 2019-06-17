@@ -33,7 +33,12 @@ res.statusCode = 206
 ```
 
 # ✍️ Develop Or Contributor
-required:
+docker用户:
+```bash
+npm run docker
+# http://localhost:3005 dev地址
+```
+非docker用户:
  - redis
  - nodejs 
  - npm(yarn)
