@@ -9,7 +9,7 @@
   "scripts": {
     "start": "cross-env PORT=3005 node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docker": "docker-compose down && docker-compose build --no-cache && docker-compose up"
+    "docker": "docker-compose -f ./docker-compose.yml up --force-recreate"
   },
   "repository": {
     "type": "git",
