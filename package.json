@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "cross-env PORT=3005 node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker": "docker-compose down && docker-compose build --no-cache && docker-compose up"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/EthanOrange/wechat-redirect/issues"
   },

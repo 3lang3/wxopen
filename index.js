@@ -22,7 +22,10 @@ var app = express();
 | THE DEMO REDIS START BY ALL DEFAULT OPTION!!!
 |--------------------------------------------------
 */
-const redisOption = {} // config your redis option in here 
+const redisOption = process.env.RUN_ENV === 'docker'
+  ? { host: 'redis', port: 6379 }
+  : {} // config your redis option in here 
+
 const client = redis.createClient(redisOption);
 const { promisify } = require('util')
 const getAsync = promisify(client.get).bind(client)
