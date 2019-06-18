@@ -3,13 +3,36 @@
   display: flex; justify-content: space-between; align-items: center;
 }
 .wrapper { width: 60%; position: relative; margin: 0 auto;}
-.btn { display: flex; justify-content: center; align-items: center; margin-left: 20px; border: none; position: absolute; right: 0; top: 0; height: 100%;
-  border: .5rem solid transparent; border-radius: 1rem; flex: 1; font-size: 1.5rem; font-weight: bold; background: none; padding: 0 1rem; outline: none;
-  cursor: pointer; transition: all .2s;
+.btn { display: flex; justify-content: center; align-items: center; 
+  border: none; position: absolute; right: 0; top: 0; height: 5rem; outline: none;
+  border-radius: 0 2.5rem 2.5rem 0; flex: 1; font-size: 1.5rem; font-weight: bold; padding: 0 2rem; color: #fff;
+  cursor: pointer; transition: all .2s; background-image: linear-gradient(to top left,#ff8a00,#da1b60);
 }
 
-header { font-size: 1rem; color: #000; }
+form { position: relative;}
+
+header { font-size: 1rem; color: #fff; }
 .input {
-  border: .5rem solid #000; border-radius: 1rem; flex: 1; 
-  height: 4rem; width: 100%; background: #fff; padding: .25rem 1.5rem; font-size: 2rem; outline: none;
+  border: .5rem solid #fff; border-radius: 2.5rem; flex: 1; font-weight: bold;
+  height: 5rem; width: 100%; background: #fff; padding: .25rem 1.5rem; font-size: 1.5rem; outline: none;
+}
+.bgLiner { 
+  background: linear-gradient(to right,#ff8a00,#da1b60); 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.sampleContainer {display: flex; justify-content: space-around; align-items: center; color: #aaa;
+  width: 50%; margin: 2rem auto 0;
+}
+.itemContainer { text-align: left; margin-top: 10px; color: #aaa; }
+.item { background: #fff; border-radius: 5px; padding: 2px 8px; display: inline-block; margin-right: 10px; font-size: .85rem; cursor: pointer;}
+.github { position: fixed; top: 20px; left: 20px; z-index: 99; text-decoration: none; }
+@media only screen and (max-width: 750px) {
+  h1 { font-size: 2rem !important;}
+  .container { padding: 0 1rem;}
+  .wrapper { width: 100%; }
+  .btn { padding: 0 1rem; }
 }
