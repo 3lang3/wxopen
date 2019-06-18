@@ -5,7 +5,7 @@
  搜索引擎翻了大概几十页结果都没具体方案，大概满足需求的情况下，最后把代码推上来，方便交流取阅🙌。
 
 **[点击查看demo](http://wxredirect.jslab.fun)👈**
-
+![微信跳转demo图片](https://raw.githubusercontent.com/EthanOrange/wechat-redirect/master/example/front/public/resource/demo_mobile.png)
 **note:** 此站点只供demo演示，请勿将demo生成的url带入真正业务链中
 
 # 🎨 应用场景
