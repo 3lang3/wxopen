@@ -3,7 +3,8 @@ import QRcode from 'qrcode.react'
 import styles from './styles.module.css'
 import './App.css';
 
-const DemoApkSourceUrl = `${window.location.protocol}//${window.location.host}/sources/demo.apk`
+const DemoApkSourceUrl = `${window.location.protocol}//${window.location.host}/resource/demo.apk`
+const DemoFileSourceUrl = `${window.location.protocol}//${window.location.host}/resource/demo.txt`
 const DemoUrl = 'https://github.com'
 
 const GithubLab = () => (
@@ -26,6 +27,9 @@ const ExampleItems = ({ onClick }) => {
       </div>
       <div onClick={() => onClick(DemoUrl)} className={styles.item}>
         <strong className={styles.bgLiner}>URL跳出</strong>
+      </div>
+      <div onClick={() => onClick(DemoFileSourceUrl)} className={styles.item}>
+        <strong className={styles.bgLiner}>普通文件下载</strong>
       </div>
     </section>
   )
