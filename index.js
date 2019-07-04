@@ -12,6 +12,7 @@ var debug = require('debug')('node-middlleware-jump:server');
 var http = require('http');
 var uuid = require('uuid')
 var redis = require('redis');
+var cors = require('cors')
 var config = require('./config')
 
 var app = express();
@@ -34,6 +35,9 @@ const setAsync = promisify(client.set).bind(client)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// api接受跨域
+app.use(cors())
 
 // you can change front static path in here
 app.use(express.static(path.join(__dirname, 'example/front/build')));
