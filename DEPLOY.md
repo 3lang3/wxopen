@@ -1,16 +1,16 @@
 # 部署DEMO站点 💻
-通过**PM2**或者**Docker**部署demo站点到自己服务器上 **（推荐docker）**
+通过**[PM2](http://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)**或者**[Docker](https://docs.docker.com/get-started/)**部署demo站点到自己服务器上 **（推荐docker）**
 
-### Docker部署
+### ✅Docker部署
 
 Platform
   - linux
 
 Requirements
-  - docker [doc](https://docs.docker.com/get-started/)
+  - docker
   - docker-compose
 
-同样先配置`nginx`, 配置完记得重启服务
+先配置`nginx`, 配置完记得重启服务
 ```bash
 location / {
   proxy_pass http://127.0.0.1:3005; # 服务地址 注意！这里我们用的是3005端口
@@ -29,15 +29,15 @@ Recreating wechat-redirect_web_1 ... done
 # docker部署完毕
 ```
 
-### PM2部署 [doc](http://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)
+### ✅PM2部署
 Platform
   - linux
 
 Requirements
   - nginx
-  - nodejs [doc](https://nodejs.org)
+  - nodejs [[doc]](https://nodejs.org)
 ```bash
-# 更新nginx配置
+# 同样先更新nginx配置
 location / {
   proxy_pass http://127.0.0.1:3000; # 服务地址
   proxy_set_header Host $host:80; # 代理到80端口 自己配置

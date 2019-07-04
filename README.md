@@ -10,9 +10,9 @@
 <img src="https://raw.githubusercontent.com/EthanOrange/wechat-redirect/master/example/front/public/resource/demo_mobile.png"  style="max-width: 200px;" />
 
 
-**note:** 此站点只供demo演示，请勿将demo生成的url带入真正业务链中
+ - ⚠️ 此站点只供demo演示，请勿将demo生成的url带入真正业务链中
+ - 🛠你可以[快速部署demo站点到自己的服务器](./DEPLOY.md)
 
-### 💻[demo站点部署文档](./DEPLOY.md) 👈**
 
 # 🎨 应用场景
 
@@ -74,8 +74,7 @@ npm run build
 # 📖TODO
 下面功能查询了相关资料，都没有找到满意都答案，大都是通过hack ticket进行伪装，如果你有好的实现或想法，欢迎交流～
   - [ ] app直接打开wechat浏览器
-  - [ ] wechat浏览器直接打开app
-  - [ ] 用户浏览器直接打开wechat or app
+  - [x] wechat浏览器直接打开app（跳出wx，之后再通过本地浏览器进行app唤起）
 
 
 UI方面
