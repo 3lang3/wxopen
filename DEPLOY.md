@@ -1,5 +1,5 @@
-# 部署DEMO站点 💻
-通过**[PM2](http://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)**或者**[Docker](https://docs.docker.com/get-started/)**部署demo站点到自己服务器上 **（推荐docker）**
+# 💻部署DEMO站点 
+通过[PM2](http://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)或者[Docker](https://docs.docker.com/get-started/)部署demo站点到自己服务器上 **（推荐docker）**
 
 ### ✅Docker部署
 
