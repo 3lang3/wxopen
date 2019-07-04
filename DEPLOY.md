@@ -3,13 +3,16 @@
 
 
 ### pm2
-Platform: linux 
-Requirement: Nginx, Nodejs
+Platform
+  - linux 
+Requirement
+  - Nginx
+  - Nodejs
 ```bash
 # 更新nginx配置
 location / {
-  proxy_pass http://127.0.0.1:3000;
-  proxy_set_header Host $host:80;
+  proxy_pass http://127.0.0.1:3000; # 服务地址
+  proxy_set_header Host $host:80; # 代理到80端口 自己配置
   proxy_set_header X-Real-IP $remote_addr;
   proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 }
@@ -25,7 +28,7 @@ npm install
 npm run build
 cd -  #回到项目根目录
 npm install
-pm2 init #生成pm2 配置文件
+pm2 init #生成pm2配置文件**ecosystem.config.js**
 ```
 修改**ecosystem.config.js**
 ```js
@@ -55,5 +58,7 @@ pm2 start --env=production
 ```
 
 ### docker 部署
-Platform: linux 
-Requirement: docker
+Platform
+  - linux 
+Requirement
+  - docker
