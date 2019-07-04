@@ -7,6 +7,6 @@ RUN cd example/front \
   cd - \
   npm install
 COPY . /app
-ENV RUN_ENV=docker PORT=3005
+ENV RUN_ENV=docker NODE_ENV=production PORT=3005
 EXPOSE 3005
 CMD ["node", "index.js"]
