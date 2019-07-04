@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import QRcode from 'qrcode.react'
+import CallApp from 'callapp-lib'
 import styles from './styles.module.css'
 import './App.css';
 
 const DemoApkSourceUrl = `${window.location.protocol}//${window.location.host}/resource/demo.apk`
-const DemoFileSourceUrl = `${window.location.protocol}//${window.location.host}/resource/demo.txt`
+// const DemoFileSourceUrl = `${window.location.protocol}//${window.location.host}/resource/demo.txt`
 const DemoUrl = 'https://github.com'
 
 const GithubLab = () => (
@@ -28,9 +30,9 @@ const ExampleItems = ({ onClick }) => {
       <div onClick={() => onClick(DemoUrl)} className={styles.item}>
         <strong className={styles.bgLiner}>URL跳出</strong>
       </div>
-      <div onClick={() => onClick(DemoFileSourceUrl)} className={styles.item}>
-        <strong className={styles.bgLiner}>普通文件下载</strong>
-      </div>
+      <Link to="/call-app" className={styles.item}>
+        <strong className={styles.bgLiner}>唤起APP</strong>
+      </Link>
     </section>
   )
 }
@@ -48,7 +50,7 @@ const QRcodeRender = ({ value }) => {
   )
 }
 
-function App() {
+function RedirectPage() {
   const [url, setUrl] = useState()
   const [loading, setLoading] = useState(false)
   const [serverUrl, setServerUrl] = useState(null)
@@ -87,6 +89,80 @@ function App() {
         {serverUrl && <QRcodeRender value={serverUrl} />}
       </footer>
     </div>
+  );
+}
+
+// 唤起app页面组件
+const isWeixin = (function () {
+  var ua = window.navigator.userAgent.toLowerCase()
+  var matched = ua.match(/MicroMessenger/i)
+  return (matched && matched[0]) === 'micromessenger'
+})()
+const appProtocol = 'taobao'
+const appStoreLink = 'itms-apps://itunes.apple.com/app/id387682726?mt=8'
+const androidDownloadLink = `https://h5.m.taobao.com/bcec/downloadTaobao.html?`
+const defaultOptions = {
+  scheme: {
+    protocol: appProtocol
+  },
+  intent: {
+    package: 'com.taobao.taobao',
+    scheme: appProtocol
+  },
+  appstore: appStoreLink,
+  yingyongbao: androidDownloadLink,
+  fallback: androidDownloadLink,
+  timeout: 2000
+}
+
+const invokeAppOpen = (
+  path,
+  option
+) => {
+  const callApp = new CallApp({ ...defaultOptions, ...option })
+  callApp.open({
+    path: path
+  })
+}
+
+const CallAppWorkflow = () => (
+  <div className={styles.workflow}>
+    <h1>唤起流程说明</h1>
+    <p>有app则直接打开，没有app则跳转到app下载页面</p>
+    <p>在微信环境下，先跳出微信环境打开本地浏览器再进行唤起app操作</p>
+  </div>
+)
+function CallAppPage() {
+  const openApp = async () => {
+    if (isWeixin) {
+      try {
+        const serverData = await fetch(`http://wxredirect.jslab.fun/api/geturl?url=${window.location.href}`)
+        const { data, msg, type } = await serverData.json()
+        if (!type) return alert(msg)
+        window.location.href = `http://wxredirect.jslab.fun/jump/${data}`
+      } catch (error) {
+        alert('服务器在发呆😐~')
+      }
+      return
+    }
+    invokeAppOpen('taobao.com')
+  }
+  return (
+    <div className={styles.callAppContainer}>
+      <CallAppWorkflow />
+      <span onClick={openApp} className={styles.openBtn}>打开淘宝APP</span>
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <div>
+        <Route exact path="/" component={RedirectPage} />
+        <Route path="/call-app" component={CallAppPage} />
+      </div>
+    </Router>
   );
 }
 

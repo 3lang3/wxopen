@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "callapp-lib": "^2.1.7",
     "http-proxy-middleware": "^0.19.1",
     "qrcode.react": "^0.9.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },
   "scripts": {
