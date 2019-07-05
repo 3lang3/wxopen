@@ -38,9 +38,9 @@ const invokeAppOpen = (
 
 const CallAppWorkflow = () => (
   <div className={styles.workflow}>
-    <h1><span role="img" aria-label="doom">🔥</span>唤起流程说明</h1>
-    <p><small><span role="img" aria-label="ball">⚾️</span>非微信环境，有app直接打开，没有app跳转到app下载页面</small></p>
-    <p><small><span role="img" aria-label="ball">🏀</span>微信环境，先跳出微信打开本地浏览器再进行唤起a操作</small></p>
+    <h1><span role="img" aria-label="doom">🔥</span>唤起APP流程</h1>
+    <p><small><span role="img" aria-label="ball">🏀</span>微信环境，先跳出微信再进行唤起app操作，或者在点击按钮时进行跳出操作。</small></p>
+    <p><small><span role="img" aria-label="ball">⚾️</span>非微信环境，有app直接打开，否则跳转到app下载页面</small></p>
   </div>
 )
 export default () => {
