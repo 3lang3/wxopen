@@ -40,7 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors())
 
 // you can change front static path in here
-app.use(express.static(path.join(__dirname, 'example/front/build')));
+// app.use(express.static(path.join(__dirname, 'example/front/build')));
 
 //front route
 // app.get('/', (req, res, next) => {
