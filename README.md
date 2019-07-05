@@ -5,7 +5,7 @@
  搜索引擎翻了大概几十页结果都没具体方案，大概满足需求的情况下，最后把代码推上来，方便交流取阅🙌。
 
 
-🌟**新增微信浏览器唤起APP功能, 微信打开[http://wxredirect.jslab.fun/call-app](http://wxredirect.jslab.fun/call-app)**🌟
+🌟**新增微信浏览器唤起APP功能**, 微信打开[http://wxredirect.jslab.fun/call-app](http://wxredirect.jslab.fun/call-app)🌟
 
 **[查看完整demo](http://wxredirect.jslab.fun)👈**
 
@@ -45,7 +45,7 @@ res.statusCode = 206
 docker用户:
 ```bash
 npm run docker
-# http://localhost:3005 dev地址
+# http://localhost:3000 dev地址
 ```
 非docker用户:
  - redis
