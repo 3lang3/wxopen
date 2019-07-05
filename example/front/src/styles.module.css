@@ -28,7 +28,9 @@ header { font-size: 1rem; color: #fff; }
   width: 50%; margin: 2rem auto 0;
 }
 .itemContainer { text-align: left; margin-top: 10px; color: #aaa; }
-.item { background: #fff; border-radius: 5px; padding: 2px 8px; display: inline-block; margin-right: 10px; font-size: .85rem; cursor: pointer;}
+.item { background: #fff; border-radius: 5px; padding: 2px 8px; display: inline-block; margin-right: 10px; font-size: .85rem; cursor: pointer;
+  text-decoration: none;
+}
 .github { position: fixed; top: 20px; left: 20px; z-index: 99; text-decoration: none; }
 
 .callAppContainer { 
