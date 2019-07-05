@@ -39,9 +39,10 @@ app.use(express.urlencoded({ extended: false }));
 // api接受跨域
 app.use(cors())
 
+// !!!!!!!!!!use nginx server static front file!!!!!!!!!!!
+// see detail in /nginx.conf file
 // you can change front static path in here
 // app.use(express.static(path.join(__dirname, 'example/front/build')));
-
 //front route
 // app.get('/', (req, res, next) => {
 //   res.writeHead(200, { 'Content-Type': 'text/html' })
