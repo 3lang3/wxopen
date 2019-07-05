@@ -41,20 +41,21 @@ app.use(cors())
 
 // you can change front static path in here
 app.use(express.static(path.join(__dirname, 'example/front/build')));
+
 //front route
-app.get('/', (req, res, next) => {
-  res.writeHead(200, { 'Content-Type': 'text/html' })
-  // this is front example build index template
-  fs.readFile('./example/front/build/index.html', 'utf-8', function (err, data) {
-    if (err) {
-      throw err;
-    }
-    res.end(data);
-  });
-})
+// app.get('/', (req, res, next) => {
+//   res.writeHead(200, { 'Content-Type': 'text/html' })
+//   // this is front example build index template
+//   fs.readFile('./example/front/build/index.html', 'utf-8', function (err, data) {
+//     if (err) {
+//       throw err;
+//     }
+//     res.end(data);
+//   });
+// })
 
 // jump router
-app.get('/jump/:key', async (req, res, next) => {
+app.get('/api/jump/:key', async (req, res, next) => {
   // 获取用户浏览器环境
   const { key } = req.params
   try {

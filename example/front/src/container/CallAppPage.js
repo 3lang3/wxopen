@@ -51,10 +51,10 @@ export default () => {
   }, [])
   const getRedirect = async () => {
     try {
-      const serverData = await fetch(`http://wxredirect.jslab.fun/api/geturl?url=${window.location.href}`)
+      const serverData = await fetch(`/api/geturl?url=${window.location.href}`)
       const { data, msg, type } = await serverData.json()
       if (!type) return alert(msg)
-      window.location.href = `http://wxredirect.jslab.fun/jump/${data}`
+      window.location.href = `/api/jump/${data}`
     } catch (error) {
       alert('服务器在发呆😐~')
     }
