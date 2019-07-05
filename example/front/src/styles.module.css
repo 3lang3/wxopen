@@ -28,8 +28,25 @@ header { font-size: 1rem; color: #fff; }
   width: 50%; margin: 2rem auto 0;
 }
 .itemContainer { text-align: left; margin-top: 10px; color: #aaa; }
-.item { background: #fff; border-radius: 5px; padding: 2px 8px; display: inline-block; margin-right: 10px; font-size: .85rem; cursor: pointer;}
+.item { background: #fff; border-radius: 5px; padding: 2px 8px; display: inline-block; margin-right: 10px; font-size: .85rem; cursor: pointer;
+  text-decoration: none;
+}
 .github { position: fixed; top: 20px; left: 20px; z-index: 99; text-decoration: none; }
+
+.callAppContainer { 
+  position: absolute; top: 0; left: 0; bottom: 0; right: 0; display: flex; justify-content: center; align-items: center;
+  flex-direction: column; text-align: center;
+}
+.workflow {
+  margin-bottom: 10vw;
+}
+.workflow p {
+  text-align: left; padding: 0 5vw;
+}
+.openBtn {
+  background: linear-gradient(to right,#ff8a00,#da1b60); border-radius: .5rem;
+  display: block; padding: 3vw 7vw; color: #fff; font-size: 1rem;
+}
 @media only screen and (max-width: 750px) {
   h1 { font-size: 2rem !important;}
   .container { padding: 0 1rem;}
