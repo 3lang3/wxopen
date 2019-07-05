@@ -5,9 +5,10 @@
  搜索引擎翻了大概几十页结果都没具体方案，大概满足需求的情况下，最后把代码推上来，方便交流取阅🙌。
 
 
-🌟**新增微信浏览器唤起APP功能**, 微信打开[http://wxredirect.jslab.fun/call-app](http://wxredirect.jslab.fun/call-app)🌟
+🌰**新增微信浏览器唤起APP例子**
+微信预览:[http://wxredirect.jslab.fun/call-app](http://wxredirect.jslab.fun/call-app)
 
-**[查看完整demo](http://wxredirect.jslab.fun)👈**
+🌰**[查看完整demo](http://wxredirect.jslab.fun)**
 
 
 <img src="./example/front/public/resource/demo_mobile_1.png"  style="max-width: 200px;" />
