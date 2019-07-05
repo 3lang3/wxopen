@@ -4,6 +4,9 @@
  这么个小功能收费？！不可能（qiong~...）。
  搜索引擎翻了大概几十页结果都没具体方案，大概满足需求的情况下，最后把代码推上来，方便交流取阅🙌。
 
+
+🌟**新增唤起APP功能**🌟
+
 **[点击查看demo](http://wxredirect.jslab.fun)👈**
 
 
@@ -74,7 +77,7 @@ npm run build
 # 📖TODO
 下面功能查询了相关资料，都没有找到满意都答案，大都是通过hack ticket进行伪装，如果你有好的实现或想法，欢迎交流～
   - [ ] app直接打开wechat浏览器
-  - [x] wechat浏览器直接打开app（跳出wx，之后再通过本地浏览器进行app唤起）
+  - [x] wechat浏览器直接打开app（跳出wx，之后再通过本地浏览器进行app唤起，依赖[callapp-lib](https://github.com/suanmei/callapp-lib)实现）
 
 
 UI方面
