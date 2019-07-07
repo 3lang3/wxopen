@@ -51,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // jump router
 app.get('/api/jump/:key', async (req, res, next) => {
+  return res.render('ios')
   // 获取用户浏览器环境
   const { key } = req.params
   try {
