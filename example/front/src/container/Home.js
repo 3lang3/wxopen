@@ -37,7 +37,7 @@ const ExampleItems = ({ onClick }) => {
 }
 
 const QRcodeRender = ({ value }) => {
-  const shortUlr = `${window.location.protocol}//${window.location.host}/api/jump/${value}`
+  const shortUlr = `${config.API_HOST}/api/jump/${value}`
   return (
     <div style={{ textAlign: 'center', marginTop: '2rem' }}>
       <div style={{ background: '#fff', padding: '.35rem .35rem .2rem', display: 'inline-block' }}>
