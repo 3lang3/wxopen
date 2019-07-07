@@ -21,6 +21,10 @@ server {
       listen [::]:80 default_server;
       server_name wxredirect.jslab.fun; #这里需要配置成自己域名
       ...
+      
+server {
+      listen 80;
+      server_name api.jslab.fun; #这里需要配置成自己域名
 ```
 
 ```bash
@@ -49,6 +53,10 @@ server {
       listen 80 default_server;
       listen [::]:80 default_server;
       server_name wxredirect.jslab.fun; #这里需要配置成自己域名
+
+server {
+      listen 80;
+      server_name api.jslab.fun; #这里需要配置成自己域名
       ...
 ```
 
