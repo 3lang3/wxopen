@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import CallApp from 'callapp-lib'
 import styles from '../styles.module.css'
+import config from '../config';
 
 
 // 唤起app页面组件
@@ -51,7 +52,7 @@ export default () => {
   }, [])
   const getRedirect = async () => {
     try {
-      const serverData = await fetch(`/api/geturl?url=${window.location.href}`)
+      const serverData = await fetch(`${config.API_HOST}/api/geturl?url=${window.location.href}`)
       const { data, msg, type } = await serverData.json()
       if (!type) return alert(msg)
       window.location.href = `/api/jump/${data}`

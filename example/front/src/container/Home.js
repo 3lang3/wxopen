@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import QRcode from 'qrcode.react'
 import styles from '../styles.module.css'
+import config from '../config';
 
 const DemoApkSourceUrl = `${window.location.protocol}//${window.location.host}/resource/demo.apk`
 // const DemoFileSourceUrl = `${window.location.protocol}//${window.location.host}/resource/demo.txt`
@@ -55,7 +56,7 @@ export default () => {
   const getUrlService = async urlStr => {
     try {
       setLoading(true)
-      const serverData = await fetch(`/api/geturl?url=${urlStr}`)
+      const serverData = await fetch(`${config.API_HOST}/api/geturl?url=${urlStr}`)
       const { data, type, msg } = await serverData.json()
       setLoading(false)
       if (!type) return alert(msg)
