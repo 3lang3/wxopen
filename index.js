@@ -40,7 +40,7 @@ app.use(express.urlencoded({ extended: false }));
 // api接受跨域
 app.use(cors())
 
-// 静态模板 主要服务于ios提示页面
+// 静态模板 主要服务于ios提示页面 
 // 可根据业务调整或者去除
 app.set('view engine', 'html')
 app.engine('html', ejs.__express)
@@ -51,7 +51,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // jump router
 app.get('/api/jump/:key', async (req, res, next) => {
-  return res.render('ios')
   // 获取用户浏览器环境
   const { key } = req.params
   try {
