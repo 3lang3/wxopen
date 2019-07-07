@@ -4,6 +4,7 @@
 | desc: 在微信浏览器中直接打开用户自带浏览器
 */
 var createError = require('http-errors');
+var ejs = require('ejs')
 var express = require('express');
 var fs = require('fs');
 var path = require('path');
@@ -39,21 +40,14 @@ app.use(express.urlencoded({ extended: false }));
 // api接受跨域
 app.use(cors())
 
+// 静态模板 主要服务于ios提示页面
+// 可根据业务调整或者去除
+app.set('view engine', 'html')
+app.engine('html', ejs.__express)
+app.use(express.static(path.join(__dirname, 'public')));
+
 // !!!!!!!!!!use nginx server static front file!!!!!!!!!!!
 // see detail in /nginx.conf file
-// you can change front static path in here
-// app.use(express.static(path.join(__dirname, 'example/front/build')));
-//front route
-// app.get('/', (req, res, next) => {
-//   res.writeHead(200, { 'Content-Type': 'text/html' })
-//   // this is front example build index template
-//   fs.readFile('./example/front/build/index.html', 'utf-8', function (err, data) {
-//     if (err) {
-//       throw err;
-//     }
-//     res.end(data);
-//   });
-// })
 
 // jump router
 app.get('/api/jump/:key', async (req, res, next) => {
@@ -66,7 +60,8 @@ app.get('/api/jump/:key', async (req, res, next) => {
     // 微信中
     if (userMobileEnv.isWeixin && !userMobileEnv.isWorkWeixin) {
       // ios 兼容
-      if (userMobileEnv.isIOS) return res.send('IOS点击右上角的三点,点击“在浏览器中打开”')
+      // 模板样板 view/ios.html
+      if (userMobileEnv.isIOS) return res.render('ios')
       // 头部伪装
       res.setHeader('Content-disposition', 'attachment;filename=open.apk');
       res.setHeader('Content-type', 'text/plain; charset=utf-8');
