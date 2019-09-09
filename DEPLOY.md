@@ -3,6 +3,13 @@
 
 #### nginx需要根据自己实际情况进行修改!（例如各种日志路径和include路径 否则部署肯定失败！）
 
+```bash
+# 比如第23行的include
+include /etc/nginx/mime.types
+# 可以参考系统nginx.conf.default 进行配置
+```
+
+
 ### ✅Docker部署
 
 Platform
