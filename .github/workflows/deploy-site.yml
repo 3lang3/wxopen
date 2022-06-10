@@ -1,0 +1,36 @@
+name: Deploy Site
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - name: Run Npm Scripts
+        run: |
+          node -v
+          npm install pnpm -g
+          pnpm -v
+          pnpm i
+          yarn front:build
+      - name: Generator 404 file
+        run: |
+          cp ./packages/front/dist/index.html ./packages/front/dist/404.html
+      - name: Deploy 🚀
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./packages/front/dist
+          cname: wxopen.3lang.dev

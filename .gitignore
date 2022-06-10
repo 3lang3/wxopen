@@ -1,0 +1,15 @@
+/node_modules/
+/npm-debug.log
+/yarn-error.log
+.DS_Store
+
+# build
+dist
+
+# dumi assets meta data
+/.vscode/
+/.idea/
+
+.env
+.env.local
+.env.production

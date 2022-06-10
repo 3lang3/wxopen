@@ -1,0 +1,11 @@
+{
+  "private": "true",
+  "version": "1.0.0",
+  "scripts": {
+    "front:build": "pnpm --dir ./packages/front build"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.3"
+  },
+  "packageManager": "pnpm"
+}
