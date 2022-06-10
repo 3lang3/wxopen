@@ -17,12 +17,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - name: Run Npm Scripts
+      - name: Install Deps
         run: |
           node -v
           npm install pnpm -g
           pnpm -v
           pnpm i
+      - name: Generator .env file
+        run: |
+          cp ./packages/front/.env.temp ./packages/front/.env
+      - name: Build site
+        run: |
           yarn front:build
       - name: Generator 404 file
         run: |
