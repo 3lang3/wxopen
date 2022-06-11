@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Divider, Field, Flex, Space, Typography } from "react-vant";
+import { Button, Divider, Field, Flex, Space, Tag, Toast, Typography } from "react-vant";
 import Qrcode from "qrcode.react";
 import styles from "./index.module.less";
 import { webviewEnv } from "../../utils/ua";
+import { copyToClipboard } from "../../utils/copy";
 
 const demoApkDownloadUrl =
   "https://imgs.ygygmall.com/app/android/2022-05-27/app-release.apk";
@@ -66,6 +67,12 @@ export default function Index() {
     window.location.replace(url);
   };
 
+  // 复制连接
+  const onCopyLink = () => {
+    copyToClipboard(jumpUrl)
+    Toast.info('复制成功，请在微信中打开')
+  }
+
   return (
     <Flex
       className={styles.page}
@@ -122,10 +129,10 @@ export default function Index() {
             size="sm"
             type="light"
             style={{ marginTop: "1rem" }}
+            onClick={onCopyLink}
           >
-            使用微信扫一扫或直接在微信中打开下面网址
+            使用微信扫一扫或<Tag className={styles.copy}>复制网址</Tag>在微信中打开
           </Typography.Text>
-          <div className={styles.jumpUrl}>{jumpUrl}</div>
         </>
       )}
     </Flex>
