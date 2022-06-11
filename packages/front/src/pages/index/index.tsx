@@ -3,6 +3,25 @@ import { Button, Divider, Field, Flex, Space, Typography } from "react-vant";
 import Qrcode from "qrcode.react";
 import styles from "./index.module.less";
 import { webviewEnv } from "../../utils/ua";
+import CallApp from "callapp-lib";
+
+const protocol = "taobao";
+const appstore = "itms-apps://itunes.apple.com/app/id387682726?mt=8";
+const fallback = "https://h5.m.taobao.com/bcec/downloadTaobao.html";
+const demoApkDownloadUrl =
+  "https://imgs.ygygmall.com/app/android/2022-05-27/app-release.apk";
+
+const ca = new CallApp({
+  scheme: {
+    protocol,
+  },
+  intent: {
+    package: "com.taobao.taobao",
+    scheme: protocol,
+  },
+  appstore,
+  fallback,
+});
 
 const GithubLab = () => (
   <a className={styles.github} href="https://github.com/3lang3/wxopen">
@@ -40,6 +59,20 @@ export default function Index() {
     setJumpUrl(jumlLink);
   };
 
+  // 打开app
+  const openApp = () => {
+    ca.open({ path: "taobao.com" });
+  };
+
+  // 下载apk
+  const onDownloadApk = () => {
+    const url = env.isWeixin
+      ? `${server}${encodeURIComponent(demoApkDownloadUrl)}`
+      : demoApkDownloadUrl;
+
+    window.location.replace(url);
+  };
+
   return (
     <Flex
       className={styles.page}
@@ -68,15 +101,22 @@ export default function Index() {
       </section>
       <Divider />
       <Space className={styles.action} align="center">
-        特性预览:
-        <Button size="mini" round className={styles.action__item}>
+        支持特性:
+        <Button
+          onClick={openApp}
+          size="mini"
+          round
+          className={styles.action__item}
+        >
+          唤起APP(淘宝)
+        </Button>
+        <Button
+          onClick={onDownloadApk}
+          size="mini"
+          round
+          className={styles.action__item}
+        >
           下载APP
-        </Button>
-        <Button size="mini" round className={styles.action__item}>
-          打开浏览器
-        </Button>
-        <Button size="mini" round className={styles.action__item}>
-          唤起APP
         </Button>
       </Space>
 
