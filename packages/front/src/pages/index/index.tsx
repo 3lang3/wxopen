@@ -1,27 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Divider, Field, Flex, Space, Typography } from "react-vant";
 import Qrcode from "qrcode.react";
 import styles from "./index.module.less";
 import { webviewEnv } from "../../utils/ua";
-import CallApp from "callapp-lib";
 
-const protocol = "taobao";
-const appstore = "itms-apps://itunes.apple.com/app/id387682726?mt=8";
-const fallback = "https://h5.m.taobao.com/bcec/downloadTaobao.html";
 const demoApkDownloadUrl =
   "https://imgs.ygygmall.com/app/android/2022-05-27/app-release.apk";
-
-const ca = new CallApp({
-  scheme: {
-    protocol,
-  },
-  intent: {
-    package: "com.taobao.taobao",
-    scheme: protocol,
-  },
-  appstore,
-  fallback,
-});
 
 const GithubLab = () => (
   <a className={styles.github} href="https://github.com/3lang3/wxopen">
@@ -49,6 +34,7 @@ export default function Index() {
   const [value, setValue] = React.useState(demoUrl);
   const [jumpUrl, setJumpUrl] = React.useState("");
   const env = webviewEnv();
+  const navigate = useNavigate();
 
   const onGenertorClick = () => {
     const jumlLink = `${server}${encodeURIComponent(value)}`;
@@ -61,7 +47,14 @@ export default function Index() {
 
   // 打开app
   const openApp = () => {
-    ca.open({ path: "taobao.com" });
+    if (env.isWeixin) {
+      const jumlLink = `${server}${encodeURIComponent(
+        `${window.location.protocol}//${window.location.host}/app`
+      )}`;
+      window.location.replace(jumlLink);
+      return;
+    }
+    navigate("/app");
   };
 
   // 下载apk
