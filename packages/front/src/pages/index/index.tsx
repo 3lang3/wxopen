@@ -33,7 +33,7 @@ const server = import.meta.env.VITE_APP_SERVER_URL;
 
 export default function Index() {
   const [value, setValue] = React.useState(demoUrl);
-  const [jumpUrl, setJumpUrl] = React.useState("");
+  const [jumpUrl, setJumpUrl] = React.useState(() => `${server}${encodeURIComponent(value)}`);
   const env = webviewEnv();
   const navigate = useNavigate();
 
@@ -131,7 +131,7 @@ export default function Index() {
             style={{ marginTop: "1rem" }}
             onClick={onCopyLink}
           >
-            使用微信扫一扫或<Tag className={styles.copy}>复制网址</Tag>在微信中打开
+            使用微信扫一扫或<Tag className={styles.copy}>复制网址</Tag>在微信打开
           </Typography.Text>
         </>
       )}
