@@ -6,7 +6,7 @@
 
 > 目前只支持安卓，IOS将显示引导页
 
-<img src="./packages/front/public/resource/wxopen_demo_qrcode.png"  style="width: 200px;" />
+<img src="./packages/front/public/resource/wxopen_demo_qrcode.png"  style="width: 360px;" />
 
 ## 🔧 Development
 
