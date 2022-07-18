@@ -30,7 +30,7 @@ const PageHeader = () => (
       ⚡️ WXOPEN <span class={tw`text-gradient`}>跳出微信</span>
     </h1>
     <section class={tw`text-sm text-gray-400`}>
-      生成二维码, 微信扫一扫体验
+       微信扫一扫体验，只支持安卓，IOS显示引导页
     </section>
   </header>
 );
